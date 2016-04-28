@@ -1,8 +1,0 @@
-kx7aokvr# MariaDB configuration
-MYSQL_ROOT_PASSWORD=<REDACTED>
-MYSQL_USER=blog
-MYSQL_PASSWORD=<REDACTED>
-MYSQL_DATABASE=blog
-# Ghost configuration
-URL=http://blog.cybercerveau.fr
-NODE_ENV=production
