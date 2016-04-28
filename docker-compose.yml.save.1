@@ -1,0 +1,30 @@
+data-blog.cybercerveau.fr:  
+ build: ./data-blog.cybercerveau.fr
+ container_name: "data-blog.cybercerveau.fr"
+mariadb:  
+ image: mariadb
+ container_name: "mariadb"
+ env_file: ./data-blog.cybercerveau.fr/env_blog.cybercerveau.fr
+ environment:
+  - TERM=xterm
+ ports:
+  - "127.0.0.1:3306:3306"
+ volumes_from:
+  - data-blog.cybercerveau.fr
+blog.cybercerveau.fr:  
+ image: ghost
+ container_name: "blog.cybercerveau.fr"
+ volume
+  - ./blog.cybercerveau.fr/config.js:/var/lib/ghost/config.js
+ volumes_from:
+  - data-blog.cybercerveau.fr
+ env_file: ./data-blog.cybercerveau.fr/env_blog.cybercerveau.fr
+ links:
+  - mariadb:mysql
+nginx:  
+ image: jwilder/nginx-proxy
+ container_name: "nginx"
+ ports: 
+  - "80:80"
+ volumes:
+  - /var/run/docker.sock:/tmp/docker.sock
